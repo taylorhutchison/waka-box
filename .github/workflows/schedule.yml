@@ -11,5 +11,5 @@ jobs:
         uses: taylorhutchison/waka-box@master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GIST_ID: 3a9e8cb2c793896d21bbf196646c627d
+          GIST_ID: 922868d7ae41f48ba00f3b3ca03c2234
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
