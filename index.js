@@ -14,6 +14,9 @@ const octokit = new Octokit({ auth: `token ${githubToken}` });
 
 async function main() {
   const stats = await wakatime.getMyStats({ range: RANGE.LAST_7_DAYS });
+  stats.data.languages
+    .map(l => `[${l.name} for ${l.text}] `)
+    .forEach(i => console.log(i));
   await updateGist(stats);
 }
 
@@ -67,10 +70,9 @@ function generateBarChart(percent, size) {
   }
   const semi = frac % 8;
 
-  return [
-    syms.substring(8, 9).repeat(barsFull),
-    syms.substring(semi, semi + 1),
-  ].join("").padEnd(size, syms.substring(0, 1));
+  return [syms.substring(8, 9).repeat(barsFull), syms.substring(semi, semi + 1)]
+    .join("")
+    .padEnd(size, syms.substring(0, 1));
 }
 
 (async () => {
